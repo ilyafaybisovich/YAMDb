@@ -12,4 +12,12 @@ feature 'searching for a movie' do
     expect(page).to have_content 'A movie about pills.'
   end
 
+  scenario 'displays useful error message if movie does not exist' do
+    visit '/'
+    fill_in 'Movie', with: 'The Aardvark'
+    click_button 'Search'
+    expect(current_path).to eq '/'
+    expect(page).to have_content 'This movie is not in YAMDb. Try again!'
+  end
+
 end
