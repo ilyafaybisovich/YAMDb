@@ -3,9 +3,11 @@ class MoviesController < ApplicationController
   end
 
   def search
-    p params
     @movie = Movie.find_by(title: params[:movie])
-    p @movie
     redirect_to movie_path(@movie)
+  end
+
+  def show
+    @movie = Movie.find(params[:id])
   end
 end

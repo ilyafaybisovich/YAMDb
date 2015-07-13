@@ -1,6 +1,5 @@
-<%= form_tag '/movies/search', method: 'get' do %>
+<%= form_tag '/movies/search', method: 'post' do %>
   <%= label_tag :movie, 'Movie' %>
   <%= text_field_tag :movie %>
-
   <%= submit_tag 'Search' %>
 <% end %>
