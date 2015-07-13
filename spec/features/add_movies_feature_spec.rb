@@ -1,8 +1,9 @@
 require 'rails_helper'
-require 'devise_helper'
+require_relative '../devise_helper'
 
 feature 'users can contribute to YAMDb' do
   scenario 'signed-in user can add film not already in the database' do
+    log_in
     click_link 'Add Movie'
     fill_in 'Title', with: 'Avatar'
     fill_in 'Description', with: 'Saving the forest.'
@@ -11,5 +12,6 @@ feature 'users can contribute to YAMDb' do
     expect(current_path).to eq movie_path(avatar)
     expect(page).to have_content 'Avatar'
     expect(page).to have_content 'Saving the forest.'
+    expect(page).to have_content 'Movie successfully added.'
   end
 end

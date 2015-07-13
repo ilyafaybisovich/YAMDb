@@ -1,3 +1,5 @@
+Rails.application.load_seed
+
 def log_in
   visit '/'
   click_link 'Sign in'
