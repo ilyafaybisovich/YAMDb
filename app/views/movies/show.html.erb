@@ -1,4 +1,9 @@
 <%= @movie.title %>
 <%= @movie.description %>
 
+<% @movie.reviews.each do |review| %>
+  Thoughts: <%= review.thoughts %>
+  Rated: <%= review.rating %>
+<% end %>
+
 <%= link_to 'Add a review', new_movie_review_path(@movie) %>
