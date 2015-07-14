@@ -4,4 +4,10 @@
   <%= submit_tag 'Search' %>
 <% end %>
 
-<%= link_to 'Add Movie', new_movie_path %>
+<% if current_user %>
+  <%= link_to 'Add Movie', new_movie_path %>
+<% end %>
+
+<% if @movies.empty? %>
+  'No movies listed. Add the first one!'
+<% end %>

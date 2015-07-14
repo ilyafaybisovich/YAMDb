@@ -14,4 +14,9 @@ feature 'users can contribute to YAMDb' do
     expect(page).to have_content 'Saving the forest.'
     expect(page).to have_content 'Movie successfully added.'
   end
+
+  scenario 'users can only add film if they are signed in' do
+    visit '/'
+    expect(page).not_to have_link 'Add Movie'
+  end
 end
