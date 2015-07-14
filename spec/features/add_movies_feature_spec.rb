@@ -19,4 +19,16 @@ feature 'users can contribute to YAMDb' do
     visit '/'
     expect(page).not_to have_link 'Add Movie'
   end
+
+  scenario 'users cannot add a movie that already exists' do
+    Movie.create(title: 'Avatar', description: 'Saving the forest.')
+    log_in
+    click_link 'Add Movie'
+    fill_in 'Title', with: 'Avatar'
+    fill_in 'Description', with: 'Saving the forest.'
+    click_button 'Add Movie'
+    expect(current_path).to eq '/'
+    expect(page).to have_content 'This movie already exists.'
+    expect(Movie.all.count).to eq 1
+  end
 end

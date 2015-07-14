@@ -8,6 +8,11 @@
   <%= link_to 'Add Movie', new_movie_path %>
 <% end %>
 
-<% if @movies.empty? %>
+<% if @movies.any? %>
+  <% @movies.each do |movie| %>
+    <%= movie.title %>
+    <%= movie.description %>
+  <% end %>
+<% else %>
   'No movies listed. Add the first one!'
 <% end %>

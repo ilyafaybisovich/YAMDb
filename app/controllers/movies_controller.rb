@@ -27,7 +27,8 @@ class MoviesController < ApplicationController
       flash[:notice] = 'Movie successfully added.'
       redirect_to movie_path(@movie)
     else
-      render 'new'
+      flash[:alert] = 'This movie already exists.'
+      redirect_to '/'
     end
   end
 
